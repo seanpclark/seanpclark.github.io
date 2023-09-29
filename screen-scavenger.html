@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Screen scavenger</title>
+  <style>
+    body {
+      overflow-y: hidden;
+    }
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      font-size: 14px;
+    }
+    h2 {
+      margin-top: 0;
+    }
+    hr {
+      border: 1px solid #efefef;
+    }
+
+    .sr-only {
+      position: absolute;
+      left: -999em;
+      right: auto;
+    }
+
+    #curtain {
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      padding: 0;
+      top: 0;
+      text-align: center;
+      z-index: 100;
+      background-color: #efefef;
+      background-image: radial-gradient(#aaa 0.5px, #efefef 0.5px);
+      background-size: 10px 10px;
+    }
+    #curtain h3 {
+      text-align: left;
+    }
+    #curtain ol {
+      text-align: left;
+    }
+
+    #instructions {
+      background-color: #fff;
+      margin: auto;
+      margin-top: 2rem;
+      padding: 2rem;
+      text-align: center;
+      width: 500px;
+    }
+
+    #instructions table {
+      border: 0;
+      padding: 0;
+      margin-bottom: 2rem;
+      text-align: left;
+      border-collapse: separate;
+      border-spacing: 0 .5rem;
+      width: 100%;
+    }
+
+    #instructions td {
+      padding: .5rem;
+    }
+
+    #instructions tr td:nth-child(2) {
+      border-left: 2px solid #ccc;
+    }
+
+    #instructions tr td:nth-child(1) {
+      font-weight: bold;
+    }
+
+    #instructions tr td[colspan="2"] {
+      background-color: #efefef;
+      font-weight: normal;
+      text-transform: uppercase;
+      letter-spacing: .1rem;
+      font-size: .8rem;
+    }
+
+    #main-content {
+      float: left;
+      padding: 1rem;
+      width: 50%;
+    }
+    #lastsection {
+      float: right;
+      padding: 1rem;
+      width: 40%;
+    }
+    #main-nav {
+      display: table;
+      width: 100%;
+    }
+    #main-nav ul {
+      margin: 0;
+      padding: 0;
+      display: table-row;
+      background-color: #036;
+      color: #fff;
+    }
+    #main-nav > ul > li {
+      list-style: none;
+      display: table-cell;
+      width: 20%;
+      text-align: center;
+      position: relative;
+    }
+    #main-nav > ul > li > ul {
+      display: none;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100%;
+      padding: 0;
+      margin: 0;
+      background-color: #036;
+    }
+    #main-nav > ul > li > ul > li {
+      text-align: left;
+      padding-left: 1rem;
+    }
+    #main-nav li a {
+      color: #fff;
+      text-decoration: none;
+      border: 1px solid #036;
+      line-height: 3rem;
+    }
+    #main-nav li.has-submenu.open ul {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 
+TO DO:
+- fix subnav item
+- Tabpanel r/l arrow to get to next tab and find text
+- √ Image with alt text
+- Hide a clue in describedby text
+- link to 
+-->
+
+<a href="#main-content" class="sr-only focusable">
+  Click this link, then use non-interactive navigation for your first clue.
+</a>
+
+<div id="main-container">
+
+<!-- w3.org flyout menu https://www.w3.org/WAI/tutorials/menus/flyout/ -->
+<nav id="main-nav" aria-label="Main">
+  <ul>
+    <li><a href="#sorry">Home</a></li>
+    <li><a href="#sorry">Squirrel Socks</a></li>
+    <li class="has-submenu">
+      <a href="#" aria-expanded="false" aria-label="Bird's nest. Almost there, click this then tab sub-items">Bird's Nest</a>
+      <ul aria-hidden="true" aria-label="Bird nest submenu">
+        <li><a href="#sorry">Egg one not the one</a></li>
+        <li><a href="#sorry">Egg two not for you</a></li>
+        <li><a href="#sorry">Egg three nothing to see</a></li>
+        <li><a href="#goodegg" id="eggcount">Egg four is your secret door. Visit me.</a></li>
+      </ul>
+    </li>
+    <li><a href="#sorry">Contact</a></li>
+  </ul>
+</nav>
+
+<main id="main-content">
+  <h1>Welcome! Start your hunt here</h1>
+  <p>This is your first task. The first three letters of the Acquia CEO's last name sounds like what bird? Hint: tab through the links below.<br>
+
+  <ul>
+    <li><a href="#sorry">Pelican</a></li>
+    <li><a href="#sorry">Anhinga</a></li>
+    <li><a href="#clue-two">Wren</a></li>
+    <li><a href="#sorry">Jay</a></li>
+  </ul>
+
+  </p>
+
+  <div id="clue-two">
+    <h2>Hello, little bird. You're on clue 2.</h2>
+    <p>Great to have you here. This second clue might be harder for you. Check the page landmarks, visit the main navigation. How many eggs are in the nest? After you select the main landmark use ctrl+option+right to get to the nest(ed) navigation item. Click the nest (ctrl+option+space) then tab to the secret door.</p>
+  </div>
+
+  <div id="goodegg">
+    <h2>You're a good egg!</h2>
+    <p>Next is clue three, you busy bee. What acronymn describes Acquia as the platform that will set your data free?</p>
+    <p>Now for clue four. Visit the "hat" region using landmarks. Of what material is the wren's hat made.</p>
+  </div>
+
+  <div id="sorry">
+    <p>Shucks. Go back and try again.</p>
+  </div>
+</main>
+
+<!-- A region landmark must have a label. https://www.w3.org/WAI/ARIA/apg/patterns/landmarks/examples/region.html -->
+<section aria-labelledby="region1" id="lastsection">
+  <h2 id="region1">What material is the hat?</h2>
+  <p>This region has an image. The alt text of the image has the answer you seek.</p>
+  <img src="https://picsum.photos/200/300" alt="wren wearing wool hat" />
+  <p>Hopefully so far you've written down all 4 clues. Your 5th clue is on youtube.com. We'll do this one with no sound.<br>
+  </p>
+  <h3>Follow these steps (screen-read all steps first):</h3>
+    <ol>
+      <li>Turn off the volume</li>
+      <li>Turn off the screen reader</li>
+      <li>Visit <a href="https://www.youtube.com/watch?v=Y3ym8sEL8hI" target="_blank">Unexpected Animal Behavior</a></li>
+      <li>Enable the captions</li>
+      <li>What are the birds doing?</li>
+      <li>After that, you're done! Make a sentence with the 5 words for each clue for bonus.</li>
+    </ol>
+</section>
+</div> <!-- /#main-container -->
+
+<!-- Curtain with instructions -->
+<div id="curtain" aria-hidden="true" tabindex="-1">
+  <div id="instructions">
+    <h2>The curtain is closed</h2>
+    <p>Navigate what lies beneath... with this cheat-sheet.</p>
+    <h3>Get started:</h3>
+    <ol>
+      <li>Turn on screen reader cmd+f5</li>
+      <li>Put cursor in the location bar</li>
+      <li>Press Tab once, then follow the instructions on the first link</li>
+    </ol>
+    <hr>
+    <table>
+      <tr>
+        <td>cmd+f5</td>
+        <td>Toggle on/off screen reader</td>
+      </tr>
+      <tr>
+        <td>ctrl</td>
+        <td>Pause reading</td>
+      </tr>
+      <tr>
+        <td colspan="2">Non-interactive elements</td>
+      </tr>
+      <tr>
+        <td>ctrl+option+right</td>
+        <td>Navigate with right/left arrows</td>
+      </tr>
+      <tr>
+        <td>ctrl+option+u</td>
+        <td>Landmarks “rotor”
+          <br>> after selecting a region
+          <br>> start with <code>ctrl+option+right</code> 
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">Interactive elements</td>
+      </tr>
+      <tr>
+        <td>tab/shift+tab</td>
+        <td>Navigate focusable elements</td>
+      </tr>
+      <tr>
+        <td>ctrl+option+space</td>
+        <td>Interact with links</td>
+      </tr>
+
+    </table>
+    <button id="hide-curtain" tabindex="-1">Remove curtain</button>
+  </div>
+</div>
+
+<script type="text/javascript">
+  // The curtain.
+  var curtain = document.getElementById('curtain');
+  var hideBtn = document.getElementById('hide-curtain');
+  hideBtn.addEventListener('mouseup', () => {
+    curtain.style.display = 'none';
+    document.body.style.overflowY = 'auto';
+  });
+
+  // The main expandable nav.
+  // https://www.w3.org/WAI/tutorials/menus/flyout/
+  var menuItems = document.querySelectorAll('li.has-submenu');
+  Array.prototype.forEach.call(menuItems, function (el, i) {
+    el.querySelector('a').addEventListener("click", function (event) {
+      if (this.parentNode.className == "has-submenu") {
+        this.parentNode.className = "has-submenu open";
+        this.setAttribute('aria-expanded', "true");
+      } else {
+        this.parentNode.className = "has-submenu";
+        this.setAttribute('aria-expanded', "false");
+      }
+      event.preventDefault();
+      return false;
+    });
+  });
+  // Submenu items.
+  var subMenuItems = document.querySelectorAll('li.has-submenu li');
+  Array.prototype.forEach.call(subMenuItems, function (el, i) {
+    // Collapse menu when subnav item clicked.
+    el.querySelector('a').addEventListener("click", function (event) {
+      var parentMenuItem = event.target.closest('.has-submenu');
+      parentMenuItem.className = "has-submenu";
+      var parentMenuItemLink = parentMenuItem.querySelector(":scope > a"); 
+      parentMenuItemLink.setAttribute('aria-expanded', "false");
+    });
+  });
+</script>
+</body>
+
+</html>

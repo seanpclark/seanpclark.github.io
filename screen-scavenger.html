@@ -92,7 +92,7 @@
       padding: 1rem;
       width: 50%;
     }
-    #lastsection {
+    #clue-4 {
       float: right;
       padding: 1rem;
       width: 40%;
@@ -143,13 +143,10 @@
 
 <body>
   <!-- 
-TO DO:
-- fix subnav item
-- Tabpanel r/l arrow to get to next tab and find text
-- √ Image with alt text
-- Hide a clue in describedby text
-- link to 
--->
+  TO DO:
+  - better way to navigate subnav?
+  - disable clues?
+  -->
 
 <a href="#main-content" class="sr-only focusable">
   Click this link, then use non-interactive navigation for your first clue.
@@ -168,7 +165,7 @@ TO DO:
         <li><a href="#sorry">Egg one not the one</a></li>
         <li><a href="#sorry">Egg two not for you</a></li>
         <li><a href="#sorry">Egg three nothing to see</a></li>
-        <li><a href="#goodegg" id="eggcount">Egg four is your secret door. Visit me.</a></li>
+        <li><a href="#clue-3" id="eggcount">Egg four is your secret door. Visit me.</a></li>
       </ul>
     </li>
     <li><a href="#sorry">Contact</a></li>
@@ -176,24 +173,26 @@ TO DO:
 </nav>
 
 <main id="main-content">
-  <h1>Welcome! Start your hunt here</h1>
-  <p>This is your first task. The first three letters of the Acquia CEO's last name sounds like what bird? Hint: tab through the links below.<br>
+  <div id="clue-1">
+    <h1>Welcome! Start your hunt here</h1>
+    <p>This is your first task. The first three letters of the Acquia CEO's last name sounds like what bird? Hint: tab through the links below.<br>
 
-  <ul>
-    <li><a href="#sorry">Pelican</a></li>
-    <li><a href="#sorry">Anhinga</a></li>
-    <li><a href="#clue-two">Wren</a></li>
-    <li><a href="#sorry">Jay</a></li>
-  </ul>
+    <ul>
+      <li><a href="#sorry">Pelican</a></li>
+      <li><a href="#sorry">Anhinga</a></li>
+      <li><a href="#clue-2">Wren</a></li>
+      <li><a href="#sorry">Jay</a></li>
+    </ul>
 
-  </p>
+    </p>
+  </div>
 
-  <div id="clue-two">
+  <div id="clue-2">
     <h2>Hello, little bird. You're on clue 2.</h2>
     <p>Great to have you here. This second clue might be harder for you. Check the page landmarks, visit the main navigation. How many eggs are in the nest? After you select the main landmark use ctrl+option+right to get to the nest(ed) navigation item. Click the nest (ctrl+option+space) then tab to the secret door.</p>
   </div>
 
-  <div id="goodegg">
+  <div id="clue-3">
     <h2>You're a good egg!</h2>
     <p>Next is clue three, you busy bee. What acronymn describes Acquia as the platform that will set your data free?</p>
     <p>Now for clue four. Visit the "hat" region using landmarks. Of what material is the wren's hat made.</p>
@@ -205,7 +204,7 @@ TO DO:
 </main>
 
 <!-- A region landmark must have a label. https://www.w3.org/WAI/ARIA/apg/patterns/landmarks/examples/region.html -->
-<section aria-labelledby="region1" id="lastsection">
+<section aria-labelledby="region1" id="clue-4">
   <h2 id="region1">What material is the hat?</h2>
   <p>This region has an image. The alt text of the image has the answer you seek.</p>
   <img src="https://picsum.photos/200/300" alt="wren wearing wool hat" />
